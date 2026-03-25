@@ -11,10 +11,7 @@ class Item extends Model
         'catogory_id',
     ];
 
-    public function catogory()
-    {
-        return $this->belongsTo(Category::class);
-    }
+
     public function ware_house()
     {
         return $this->belongsTo(WareHouse::class);
@@ -26,5 +23,9 @@ class Item extends Model
     public function exports()
     {
         return $this->belongsToMany(Export::class , 'export_items');
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class,'catogory_id');
     }
 }

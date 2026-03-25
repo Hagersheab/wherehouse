@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Import extends Model
 {
+   public const STATUS_PENDING = 'pending';
+    public const STATUS_CONFIRMED = 'confirmed';
     protected $fillable = [
         'date',
         'status',
@@ -17,6 +19,11 @@ class Import extends Model
     }
     public function items()
     {
-        return $this->belongsToMany(Item::class , 'import_items');
+        return $this->belongsToMany(Item::class , 'import_items')
+        ->withPivot('quantity');
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

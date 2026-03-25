@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ware_houses', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->date('expired_date');
+            $table->date('expired_date')->nullable();
             $table->unsignedBigInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
             $table->timestamps();

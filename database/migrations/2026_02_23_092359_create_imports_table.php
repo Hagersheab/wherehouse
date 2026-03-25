@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('imports', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->string('status');
-            $table->unsignedBigInteger('aprovet_by_id');
+            $table->date('date')->nullable();
+            $table->string('status')->nullable();
+            $table->unsignedBigInteger('aprovet_by_id')->nullable();
             $table->foreign('aprovet_by_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

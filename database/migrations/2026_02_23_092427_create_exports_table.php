@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('exports', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->date('date_approve');
-            $table->unsignedBigInteger('reseved_by_id');
+            $table->unsignedBigInteger('reseved_by_id')->nullable();
             $table->foreign('reseved_by_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('approved_by_id');
+            $table->unsignedBigInteger('approved_by_id')->nullable();
             $table->foreign('approved_by_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
